@@ -47,3 +47,15 @@ class Pendu:
             return "bon"
         self.lettres_ratees.append(lettre)
         return "mauvais"
+    def mot_affiche(self):
+        """Ex. : 'p y _ _ o _' selon les lettres trouvées."""
+        return " ".join(l if l in self.lettres_trouvees else "_" for l in self.mot)
+ 
+    def est_gagne(self):
+        return all(l in self.lettres_trouvees for l in self.mot)
+ 
+    def est_perdu(self):
+        return self.erreurs >= self.max_erreurs
+ 
+    def est_termine(self):
+        return self.est_gagne() or self.est_perdu()
